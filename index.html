@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Refill</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../map-assets/mapzen.css" />
+    <script src="../map-assets/mapzen.min.js"></script>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      #map { height: 100%; width: 100%; position: absolute; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map = L.Mapzen.map('map', {
+        center: [37.7562, -122.4313],
+        zoom: 15.8375,
+        tangramOptions: {
+          scene: 'https://www.nextzen.org/carto/refill-style/11/refill-style.zip'
+        }
+      });
+      var geocoderOptions = {
+        url: 'https://api.geocode.earth/v1/'
+      };
+      var geocoder = L.Mapzen.geocoder('ge-5bdbeb8dbfb3a8f0', geocoderOptions);
+      geocoder.addTo(map);
+      L.Mapzen.hash({
+        map: map
+      })
+    </script>
+  </body>
+</html>
